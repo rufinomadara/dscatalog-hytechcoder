@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,7 @@ public class CategoryResource {
 	@Autowired
 	private CategoryService service;
 	
+//	método que lista todas as categorias, chama a service 
 	@GetMapping
 	public ResponseEntity<List<CategoryDTO>> finAll(){
 		List<CategoryDTO> list = service.findAll();
@@ -31,6 +33,7 @@ public class CategoryResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+//	Método que retorna a busca de uma categoria
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<CategoryDTO> findById(@PathVariable Long id){
 
@@ -39,6 +42,7 @@ public class CategoryResource {
 		return ResponseEntity.ok().body(dto);
 	}
 	
+//	Médodo que inseri uma nova categoria retornando status 201 se for criada com sucesso
 	@PostMapping
 	public ResponseEntity<CategoryDTO> insert(@RequestBody CategoryDTO dto){
 		dto = service.insert(dto);
@@ -52,5 +56,12 @@ public class CategoryResource {
 		dto = service.update(id, dto);
 		return ResponseEntity.ok().body(dto);
 	}
+	
+	@DeleteMapping (value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Long id){
+		service.delete(id);
+		return ResponseEntity.noContent().build(); //Dá uma resposta 204 deu certo e o corpo da resposta está vázio
+	}
+	
 	
 }
