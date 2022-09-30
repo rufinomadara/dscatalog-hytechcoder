@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 import com.hytechcoder.dscatalog.entities.User;
 
 public class UserDTO implements Serializable {
@@ -13,8 +16,12 @@ public class UserDTO implements Serializable {
 	//atributos que eu quero que transite informações pelo DTO
 	
 	private Long id;
+	
+	@NotBlank(message = "Campo Obrigatório!")
 	private String firstName;
 	private String lastName;
+
+	@Email(message = "Por favor, entre com um email válido!")
 	private String email;
 	
 	Set<RoleDTO> roles = new HashSet<>();
