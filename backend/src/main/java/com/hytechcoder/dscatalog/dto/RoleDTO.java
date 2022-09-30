@@ -39,6 +39,4 @@ public class RoleDTO implements Serializable{
 		this.authority = authority;
 	}
 	
-	
-	
 }
