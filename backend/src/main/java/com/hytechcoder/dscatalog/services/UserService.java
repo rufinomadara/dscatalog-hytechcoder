@@ -77,7 +77,7 @@ public class UserService {
 
 //	Método para atualizar uma categoria existente, caso não existe retorna "Id not found concatenado com o id que não existe///////"
 	@Transactional
-	public UserDTO update(Long id, UserDTO dto) {
+	public UserDTO update(Long id, UserUpdateDTO dto) {
 		User entity = repository.getOne(id);
 		
 		try {

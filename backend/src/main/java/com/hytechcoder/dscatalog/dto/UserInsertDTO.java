@@ -1,5 +1,8 @@
 package com.hytechcoder.dscatalog.dto;
 
+import com.hytechcoder.dscatalog.services.validation.UserInsertValid;
+
+@UserInsertValid
 public class UserInsertDTO extends UserDTO {
 
 	private static final long serialVersionUID = 1L;
